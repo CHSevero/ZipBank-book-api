@@ -12,8 +12,8 @@ def add_author(author: SchemaAuthor):
 
 
 @router.get("/authors/", tags=["Author"])
-def get_authors(format: Optional[str] = None):
-    return author_service.authors(format)
+def get_authors(format: Optional[str] = None, page: Optional[int] = 1, size: Optional[int] = 10):
+    return author_service.authors(format, page, size)
 
 
 @router.get("/author/{id}", tags=["Author"])

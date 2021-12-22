@@ -2,9 +2,8 @@ from app.models.author import Author as ModelAuthor
 from app.schemas.author import Author as SchemaAuthor
 from fastapi_sqlalchemy import db
 from fastapi.encoders import jsonable_encoder
-from xml.dom.minidom import parseString
 from dicttoxml import dicttoxml
-
+from app.utils.pagination import paginate
 
 def add_author(author: SchemaAuthor):
     db_author = ModelAuthor(name=author.name)
@@ -13,13 +12,14 @@ def add_author(author: SchemaAuthor):
     return db_author
 
 
-def authors(format):
+def authors(format, page, size):
     authors = db.session.query(ModelAuthor).all()
+    paginated_authors = paginate(authors, page, size)
     if format == "xml":
-        authors_json = jsonable_encoder(authors)
+        authors_json = jsonable_encoder(paginated_authors)
         authors_xml = dicttoxml(authors_json)
         return authors_xml
-    return authors
+    return paginated_authors
 
 
 def author(id, format):
