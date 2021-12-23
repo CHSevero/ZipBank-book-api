@@ -8,6 +8,7 @@ from alembic import context
 import os
 from models.author import Base as AuthorBase
 from models.user import Base as UserBase
+from models.book import Base as BookBase
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
@@ -20,7 +21,10 @@ fileConfig(config.config_file_name)
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = [AuthorBase.metadata, UserBase.metadata, ]
+target_metadata = [AuthorBase.metadata,
+                   UserBase.metadata,
+                   BookBase.metadata,
+                   ]
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
