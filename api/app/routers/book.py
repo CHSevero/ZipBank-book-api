@@ -21,3 +21,25 @@ def get_books(
         token: str = Depends(get_current_active_user)
 ):
     return service_book.get_books(page, size)
+
+
+@router.get("/book/{book_id}", tags=["Book"])
+def get_book(book_id: int,
+             token: str = Depends(get_current_active_user)
+             ):
+    return service_book.get_book(book_id)
+
+
+@router.put("/book/{book_id}", tags=["Book"])
+def update_Book(book_id: int,
+                book: SchemaBook,
+                token: str = Depends(get_current_active_user)
+                ):
+    return service_book.update_book(book_id, book)
+
+
+@router.delete("/book/", tags=["Book"])
+def delete_book(book_id: int,
+                token: str = Depends(get_current_active_user)
+                ):
+    return service_book.delete_book(book_id)

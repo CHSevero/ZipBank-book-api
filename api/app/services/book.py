@@ -18,3 +18,24 @@ def get_books(page: int, size: int):
     paginated_books = paginate(books, page, size)
     return paginated_books
 
+
+def get_book(book_id: int):
+    book = db.session.get(Book, {"id": book_id})
+    return book
+
+
+def update_book(book_id: int, book: SchemaBook):
+    book_db = db.session.get(Book, {"id": book_id})
+    if book_db:
+        book_db.title = book.title
+        book_db.description = book.description
+        book_db.author_id = book.author_id
+    return book_db
+
+
+def delete_book(book_id: int):
+    book_db = db.session.get(Book, {"id": book_id})
+    if book_db:
+        db.session.delete(book_db)
+        db.session.commit()
+    return book_db
