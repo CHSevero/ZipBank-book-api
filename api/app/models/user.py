@@ -4,10 +4,10 @@ from sqlalchemy.sql import func
 
 Base = declarative_base()
 
-
-class Author(Base):
-    __tablename__ = "author"
+class User(Base):
+    __tablename__ = "user"
     id = Column(Integer, primary_key=True)
-    name = Column(String)
+    username = Column(String, unique=True)
+    hashed_password = Column(String)
     time_created = Column(DateTime(timezone=True), server_default=func.now())
     time_updated = Column(DateTime(timezone=True), onupdate=func.now())

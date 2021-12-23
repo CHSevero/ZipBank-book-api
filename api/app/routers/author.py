@@ -1,7 +1,8 @@
 from typing import Optional
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from app.schemas.author import Author as SchemaAuthor
 from app.services import author as author_service
+from app.services.auth import oauth2_scheme
 
 router = APIRouter()
 
@@ -12,7 +13,11 @@ def add_author(author: SchemaAuthor):
 
 
 @router.get("/authors/", tags=["Author"])
-def get_authors(format: Optional[str] = None, page: Optional[int] = 1, size: Optional[int] = 10):
+def get_authors(format: Optional[str] = None,
+                page: Optional[int] = 1,
+                size: Optional[int] = 10,
+                token: str = Depends(oauth2_scheme)
+                ):
     return author_service.authors(format, page, size)
 
 
