@@ -51,8 +51,8 @@ BookAPI is a basic crud operation API for authors and books. This is a dockerize
 │      │      ├── test      <- api tests
 │      │      └── utils     <- api utils
 │      │
-│      ├── Dockerfile         <- The final, canonical data sets for modeling
-│      └── requirements.txt   <- The original, immutable data dump
+│      ├── Dockerfile        
+│      └── requirements.txt   <- project requirements
 │
 ├── .env  <- Environment variables file
 │
