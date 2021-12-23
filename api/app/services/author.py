@@ -5,6 +5,7 @@ from fastapi.encoders import jsonable_encoder
 from dicttoxml import dicttoxml
 from app.utils.pagination import paginate
 
+
 def add_author(author: SchemaAuthor):
     db_author = ModelAuthor(name=author.name)
     db.session.add(db_author)
