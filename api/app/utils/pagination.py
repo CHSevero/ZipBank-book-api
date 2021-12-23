@@ -2,7 +2,7 @@ def paginate(collection, page, size):
     if page < 0 or size < 0:
         return {"message": "Error, page and size values have to be no negative integers."}
     begin = (page - 1) * size
-    end = begin + size - 1
+    end = begin + size
     collection_size = len(collection)
     if collection_size < begin:
         return {
