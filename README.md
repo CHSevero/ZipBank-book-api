@@ -11,4 +11,5 @@ The following tools were used on the project construction.
 - [Alembic](https://pypi.org/project/alembic/)
 - [Psycopg2](https://pypi.org/project/psycopg2/)
 - [Pydantic](https://pydantic-docs.helpmanual.io/)
-  
+- [Python-jose](https://cryptography.io/en/latest/)
+- [Passlib](https://passlib.readthedocs.io/en/stable/)
